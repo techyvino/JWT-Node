@@ -10,4 +10,19 @@ const signUpBodyValidator = (body) => {
   return schema.validate(body);
 };
 
-export { signUpBodyValidator };
+const loginBodyValidator = (body) => {
+  const schema = Joi.object({
+    username: Joi.string().required().label("Username"),
+    password: Joi.string().required().label("Password"),
+  });
+  return schema.validate(body);
+};
+
+const refreshTokenBodyValidator = (body) => {
+  const schema = Joi.object({
+    token: Joi.string().required().label("refresh token"),
+  });
+  return schema.validate(body);
+};
+
+export { signUpBodyValidator, loginBodyValidator, refreshTokenBodyValidator };
